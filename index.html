@@ -1,59 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Elegant Boutique</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body { font-family: Arial; background:#f8f8f8; margin:0; }
-    header { background:#6c3483; color:white; padding:15px; text-align:center; }
-    .container { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:15px; padding:15px; }
-    .card { background:white; border-radius:10px; padding:10px; box-shadow:0 0 8px #ccc; }
-    img { width:100%; border-radius:10px; }
-    .price { color:#c0392b; font-weight:bold; }
-    button { background:#6c3483; color:white; border:none; padding:10px; width:100%; border-radius:5px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arsha's Boutique</title>
+<link rel="stylesheet" href="style.css">
+<!-- Stripe -->
+<script src="https://js.stripe.com/v3/"></script>
 </head>
-
 <body>
-
 <header>
-  <h2>Elegant Boutique</h2>
-  <p>Exclusive Dresses</p>
+  <h1>Arsha's Boutique</h1>
+  <nav>
+    <a href="#" id="cart-btn">Cart 🛒 (<span id="cart-count">0</span>)</a>
+  </nav>
 </header>
 
-<div class="container">
+<section class="product-grid" id="product-grid">
+  <!-- Products dynamically loaded -->
+</section>
 
-  <div class="card">
-    <img src="dress1.jpg">
-    <h3>Printed Kurta Set</h3>
-    <p>Sizes: S M L XL</p>
-    <p class="price">AED 199</p>
-    <a href="https://wa.me/+971528224143" target="_blank">
-      <button>Order on WhatsApp</button>
-    </a>
+<!-- Product Modal -->
+<div id="product-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="close-modal">&times;</span>
+    <img id="modal-img" src="" alt="">
+    <h2 id="modal-name"></h2>
+    <p id="modal-desc"></p>
+    <p>Price: $<span id="modal-price"></span></p>
+    <label>Size:
+      <select id="modal-size">
+        <option>S</option><option>M</option><option>L</option><option>XL</option>
+      </select>
+    </label>
+    <button id="modal-add-cart">Add to Cart</button>
+    <h3>Reviews</h3>
+    <ul id="modal-reviews"></ul>
+    <textarea id="review-input" placeholder="Write a review..."></textarea>
+    <button id="submit-review">Submit Review</button>
   </div>
-
-  <div class="card">
-    <img src="dress2.jpg">
-    <h3>Floral Long Dress</h3>
-    <p>Sizes: M L XL</p>
-    <p class="price">AED 249</p>
-    <a href="https://wa.me/+971528224143" target="_blank">
-      <button>Order on WhatsApp</button>
-    </a>
-  </div>
-
-  <div class="card">
-    <img src="dress3.jpg">
-    <h3>Casual Printed Set</h3>
-    <p>Sizes: S M L</p>
-    <p class="price">AED 179</p>
-    <a href="https://wa.me/+971528224143" target="_blank">
-      <button>Order on WhatsApp</button>
-    </a>
-  </div>
-
 </div>
 
+<!-- Cart Modal -->
+<div id="cart-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="close-cart">&times;</span>
+    <h2>Your Cart</h2>
+    <ul id="cart-items"></ul>
+    <p>Total: $<span id="cart-total">0</span></p>
+    <button id="checkout-btn">Checkout</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
