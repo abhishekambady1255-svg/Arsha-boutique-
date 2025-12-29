@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Arsha's Boutique</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body { margin:0; font-family: Arial, sans-serif; background:#fafafa; }
+header {
+    background:#7a2f4d;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+.logo { width:90px; margin-bottom:10px; }
+
+.products {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+    padding:20px;
+}
+.card {
+    background:white;
+    border-radius:10px;
+    padding:15px;
+    box-shadow:0 4px 8px rgba(0,0,0,.1);
+}
+.card img { width:100%; border-radius:8px; }
+
+.thumbs img {
+    width:60px; height:70px; object-fit:cover;
+    margin:5px 5px 0 0;
+    cursor:pointer; border-radius:5px;
+}
+
+.price { color:#7a2f4d; font-weight:bold; font-size:18px; }
+
+select, input, button {
+    width:100%; padding:10px; margin-top:10px;
+}
+button {
+    background:#25D366; color:white;
+    border:none; font-size:16px;
+    border-radius:5px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="logo.png" class="logo">
+    <h1>Arsha's Boutique</h1>
+    <p>Premium Women’s Wear Collection</p>
+</header>
+
+<div class="products">
+
+<!-- ================= PRODUCT START ================= -->
+<div class="card">
+    <img id="p1" src="images/dress1a.jpg">
+
+    <div class="thumbs">
+        <img src="images/dress1a.jpg" onclick="img('p1',this.src)">
+        <img src="images/dress1b.jpg" onclick="img('p1',this.src)">
+        <img src="images/dress1c.jpg" onclick="img('p1',this.src)">
+    </div>
+
+    <h3>Floral Anarkali Dress</h3>
+    <p>Elegant festive wear.</p>
+    <p class="price">AED 249</p>
+
+    <select id="s1">
+        <option>S</option><option>M</option><option>L</option><option>XL</option>
+    </select>
+
+    <input type="number" id="q1" value="1" min="1">
+
+    <button onclick="order(
+        'Floral Anarkali Dress',
+        '249',
+        s1.value,
+        q1.value
+    )">Order on WhatsApp</button>
+</div>
+<!-- ================= PRODUCT END ================= -->
+
+<!-- COPY ABOVE BLOCK TO ADD NEW PRODUCT -->
+
+</div>
+
+<script>
+function img(id,src){ document.getElementById(id).src=src; }
+
+function order(name,price,size,qty){
+    let phone="971XXXXXXXXX"; // CHANGE NUMBER
+    let msg=`Hello Arsha's Boutique,
+Product: ${name}
+Price: AED ${price}
+Size: ${size}
+Qty: ${qty}`;
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`);
+}
+</script>
+
+</body>
+</html>
